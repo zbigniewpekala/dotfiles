@@ -66,3 +66,15 @@
 (setq py-split-windows-on-execute-p t)
 (setq py-smart-indentation t)
 
+;; marmalade
+(require 'package)
+(add-to-list 'package-archives 
+    '("marmalade" .
+      "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
+;; jedi - installed by marmalade
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)
+(setq jedi:complete-on-dot t)
