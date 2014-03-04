@@ -26,6 +26,10 @@
 ;; match pairs of characters
 (show-paren-mode 1)
 
+;; ido mode
+(require 'ido)
+(ido-mode t)
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -48,5 +52,17 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
+;; python with ipython for python3
+(add-to-list 'load-path "~/.emacs.d/python-mode-6.1.3")
+(require 'python-mode)
 
+(setq-default py-shell-name "ipython3")
+(setq-default py-which-bufname "IPython")
+(setq py-python-command-args '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
+(setq py-force-py-shell-name-p t)
+
+(setq py-shell-switch-buffers-on-execute-p t)
+(setq py-switch-buffers-on-execute-p t)
+(setq py-split-windows-on-execute-p t)
+(setq py-smart-indentation t)
 
