@@ -10,8 +10,8 @@
 ;; line numbers
 (global-linum-mode t)
 
-;; 10pt text
-(set-face-attribute 'default nil :height 100)
+;; 11pt text
+(set-face-attribute 'default nil :height 110)
 
 ;; disable line wrapping
 (setq-default truncate-lines t)
@@ -78,3 +78,11 @@
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:setup-keys t)
 (setq jedi:complete-on-dot t)
+
+;; erlang
+(add-to-list 'load-path "/usr/local/opt/erlang/lib/erlang/lib/tools-2.6.13/emacs")
+(setq erlang-root-dir "/usr/local/opt/erlang/lib/erlang")
+(add-to-list 'exec-path "/usr/local/opt/erlang/lib/erlang/bin")
+(require 'erlang-start)
+(add-to-list 'ac-modes 'erlang-mode)
+
