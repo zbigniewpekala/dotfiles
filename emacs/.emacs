@@ -23,6 +23,10 @@
 ;; tab size
 (setq-default tab-width 4)
 
+;; scratch buffer cleanup
+(setq initial-scratch-message "")
+(setq inhibit-startup-message t)
+
 ;; match pairs of characters
 (show-paren-mode 1)
 
