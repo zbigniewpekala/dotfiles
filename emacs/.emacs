@@ -23,6 +23,9 @@
 ;; tab size
 (setq-default tab-width 4)
 
+;; hate tabs!
+(setq-default indent-tabs-mode nil)
+
 ;; scratch buffer cleanup
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
