@@ -26,6 +26,9 @@
 ;; hate tabs!
 (setq-default indent-tabs-mode nil)
 
+;; always display whitespaces
+(global-whitespace-mode 1)
+
 ;; scratch buffer cleanup
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
