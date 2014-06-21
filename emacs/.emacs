@@ -1,11 +1,13 @@
 ;; config files
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
-
+(add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
 ;; color theme
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-deep-blue)
+;(require 'color-theme)
+(require 'color-theme-solarized)
+(load-theme 'solarized-dark t)
+;(color-theme-initialize)
+;(color-theme-solarized-dark)
 
 ;; line numbers
 (global-linum-mode t)
@@ -27,7 +29,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;; always display whitespaces
-(global-whitespace-mode 1)
+;(global-whitespace-mode 1)
 
 ;; scratch buffer cleanup
 (setq initial-scratch-message "")
@@ -82,6 +84,11 @@
     '("marmalade" .
       "http://marmalade-repo.org/packages/"))
 (package-initialize)
+
+;; clojure
+(unless (package-installed-p 'clojure-mode)
+  (package-refresh-contents)
+  (package-install 'clojure-mode))
 
 ;; jedi - installed by marmalade
 (autoload 'jedi:setup "jedi" nil t)
