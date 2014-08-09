@@ -2,6 +2,15 @@
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 (add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
+(add-to-list 'load-path "~/.emacs.d/markdown-mode")
+
+;; markdown mode
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
 ;; color theme
 ;(require 'color-theme)
 (require 'color-theme-solarized)
@@ -103,3 +112,5 @@
 (require 'erlang-start)
 (add-to-list 'ac-modes 'erlang-mode)
 
+; Polish characters (change right Meta key into Alt)
+(setq ns-right-alternate-modifier nil)
