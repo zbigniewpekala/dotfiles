@@ -106,7 +106,7 @@
 (setq jedi:complete-on-dot t)
 
 ;; erlang
-(add-to-list 'load-path "/usr/local/opt/erlang/lib/erlang/lib/tools-2.6.13/emacs")
+(add-to-list 'load-path "/usr/local/opt/erlang/lib/erlang/lib/tools-2.7.1/emacs")
 (setq erlang-root-dir "/usr/local/opt/erlang/lib/erlang")
 (add-to-list 'exec-path "/usr/local/opt/erlang/lib/erlang/bin")
 (require 'erlang-start)
