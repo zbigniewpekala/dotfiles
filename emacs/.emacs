@@ -1,5 +1,5 @@
 ;; config files
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 (add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
@@ -21,8 +21,8 @@
 ;; line numbers
 (global-linum-mode t)
 
-;; 11pt text
-(set-face-attribute 'default nil :height 110)
+;; 13pt text
+(set-face-attribute 'default nil :height 130)
 
 ;; disable line wrapping
 (setq-default truncate-lines t)
@@ -106,9 +106,9 @@
 (setq jedi:complete-on-dot t)
 
 ;; erlang
-(add-to-list 'load-path "/usr/local/opt/erlang/lib/erlang/lib/tools-2.7.1/emacs")
-(setq erlang-root-dir "/usr/local/opt/erlang/lib/erlang")
-(add-to-list 'exec-path "/usr/local/opt/erlang/lib/erlang/bin")
+(add-to-list 'load-path "/usr/local/opt/erlang-r16/lib/erlang/lib/tools-2.6.13/emacs")
+(setq erlang-root-dir "/usr/local/opt/erlang-r16/lib/erlang")
+(add-to-list 'exec-path "/usr/local/opt/erlang-r16/lib/erlang/bin")
 (require 'erlang-start)
 (add-to-list 'ac-modes 'erlang-mode)
 
