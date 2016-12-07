@@ -21,8 +21,8 @@
 ;; line numbers
 (global-linum-mode t)
 
-;; 13pt text
-(set-face-attribute 'default nil :height 130)
+;; 16pt text
+(set-face-attribute 'default nil :height 160)
 
 ;; disable line wrapping
 (setq-default truncate-lines t)
@@ -99,6 +99,11 @@
   (package-refresh-contents)
   (package-install 'clojure-mode))
 
+;; elixir
+(unless (package-installed-p 'elixir-mode)
+  (package-refresh-contents)
+  (package-install 'elixir-mode))
+
 ;; jedi - installed by marmalade
 (autoload 'jedi:setup "jedi" nil t)
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -106,8 +111,8 @@
 (setq jedi:complete-on-dot t)
 
 ;; erlang
-(add-to-list 'load-path "/usr/local/opt/erlang-r16/lib/erlang/lib/tools-2.6.13/emacs")
-(setq erlang-root-dir "/usr/local/opt/erlang-r16/lib/erlang")
+(add-to-list 'load-path "/usr/local/lib/erlang/lib/tools-2.7.2/emacs")
+(setq erlang-root-dir "/usr/local/lib/erlang")
 (add-to-list 'exec-path "/usr/local/opt/erlang-r16/lib/erlang/bin")
 (require 'erlang-start)
 (add-to-list 'ac-modes 'erlang-mode)
@@ -124,3 +129,8 @@
 (add-hook 'yaml-mode-hook
   '(lambda ()
     (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
+(add-to-list 'load-path "/Users/zbigniewpekala/src/priv/neotree")
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
