@@ -15,9 +15,6 @@
 ;; use spaces
 (setq-default indent-tabs-mode nil)
 
-;; always display whitespaces
-(global-whitespace-mode 1)
-
 ;; color theme
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 (add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
