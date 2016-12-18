@@ -42,6 +42,8 @@
 (eval-after-load 'rainbow-delimeters
   '(global-rainbow-delimiters-mode))
 
+(global-set-key (kbd "C-x b") 'ibuffer)
+
 
 ;; key bindings
 
@@ -58,15 +60,6 @@
     "http://melpa.org/packages/"))
 (package-initialize)
 
-;; autocomplete
-(unless (package-installed-p 'auto-complete)
-  (package-refresh-contents)
-  (package-install 'auto-complete))
-
-(require 'auto-complete)
-(ac-config-default)
-(add-to-list 'ac-modes 'erlang-mode)
-
 ;; neotree file tree
 (unless (package-installed-p 'neotree)
   (package-refresh-contents)
@@ -76,16 +69,40 @@
 (setq neo-theme (if (display-graphic-p) 'arrow))
 (global-set-key (kbd "C-x C-l") 'neotree-find)
 
-;; clojure
-(unless (package-installed-p 'clojure-mode)
+;; auto-complete autocomplete
+;(unless (package-installed-p 'auto-complete)
+;  (package-refresh-contents)
+;  (package-install 'auto-complete))
+
+;  (require 'auto-complete)
+;  (ac-config-default)
+;  (add-to-list 'ac-modes 'erlang-mode)
+
+;; company autocomplete
+(unless (package-installed-p 'company)
   (package-refresh-contents)
-  (package-install 'clojure-mode))
+  (package-install 'company))
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+(global-set-key (kbd "M-SPC") 'company-complete)
 
 ;; erlang
 (add-to-list 'load-path "/opt/erlang/17.5/lib/tools-2.7.2/emacs")
 (setq erlang-root-dir "/opt/erlang/17.5")
 (add-to-list 'exec-path "/opt/erlang/17.5/bin")
 (require 'erlang-start)
+
+;; distel required by company-distel
+(add-to-list 'load-path "~/.emacs.d/distel/elisp")
+(require 'distel)
+(distel-setup)
+
+;; add erlang distel autocomplete to company
+(unless (package-installed-p 'company-distel)
+  (package-refresh-contents)
+  (package-install 'company-distel))
+(require 'company-distel)
+(add-to-list 'company-backends 'company-distel)
 
 ;; elixir
 (unless (package-installed-p 'alchemist)
