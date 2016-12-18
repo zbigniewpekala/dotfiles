@@ -91,3 +91,4 @@
 (unless (package-installed-p 'alchemist)
   (package-refresh-contents)
   (package-install 'alchemist))
+(alchemist-mode t)
