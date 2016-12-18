@@ -36,14 +36,26 @@
 (require 'ido)
 (ido-mode t)
 
+;; cua mode for better copy-paste
+(cua-mode t)
+
+(eval-after-load 'rainbow-delimeters
+  '(global-rainbow-delimiters-mode))
+
+
+;; key bindings
+
+(setq mac-command-modifier 'control)
+(global-set-key (kbd "M-TAB") 'other-window)
+
 
 ;; packages
 
 ;; Add MELPA archive
 (require 'package)
 (add-to-list 'package-archives 
-    '("melpa" .
-      "http://melpa.org/packages/"))
+  '("melpa" .
+    "http://melpa.org/packages/"))
 (package-initialize)
 
 ;; autocomplete
@@ -54,6 +66,15 @@
 (require 'auto-complete)
 (ac-config-default)
 (add-to-list 'ac-modes 'erlang-mode)
+
+;; neotree file tree
+(unless (package-installed-p 'neotree)
+  (package-refresh-contents)
+  (package-install 'neotree))
+(setq neo-smart-open t)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-theme (if (display-graphic-p) 'arrow))
+(global-set-key (kbd "C-x C-l") 'neotree-find)
 
 ;; clojure
 (unless (package-installed-p 'clojure-mode)
