@@ -48,8 +48,13 @@
 ;; key bindings
 
 (setq mac-command-modifier 'control)
-(global-set-key (kbd "M-TAB") 'other-window)
 
+(global-set-key (kbd "M-TAB") 'other-window)
+(defun prev-window ()
+  (interactive)
+  (other-window -1))
+(global-set-key (kbd "C-M-y") 'prev-window)
+ 
 
 ;; packages
 
