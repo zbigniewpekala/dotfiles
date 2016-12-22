@@ -49,12 +49,24 @@
 
 (setq mac-command-modifier 'control)
 
-(global-set-key (kbd "M-TAB") 'other-window)
 (defun prev-window ()
   (interactive)
   (other-window -1))
-(global-set-key (kbd "C-M-y") 'prev-window)
- 
+
+(defvar my-keys-minor-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "M-TAB") 'other-window)
+    (define-key map (kbd "C-M-y") 'prev-window)
+    map)
+  "my-keys-minor-mode keymap.")
+
+(define-minor-mode my-keys-minor-mode
+  "My own key overrides!"
+  :init-value t
+  :lighter " my-keys")
+
+(my-keys-minor-mode 1)
+
 
 ;; packages
 
