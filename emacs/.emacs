@@ -57,6 +57,7 @@
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "M-TAB") 'other-window)
     (define-key map (kbd "C-M-y") 'prev-window)
+    (define-key map (kbd "C-x f") 'fiplr-find-file)
     map)
   "my-keys-minor-mode keymap.")
 
@@ -76,6 +77,12 @@
   '("melpa" .
     "http://melpa.org/packages/"))
 (package-initialize)
+
+;; fuzzy project navigation
+(unless (package-installed-p 'fiplr)
+  (package-refresh-contents)
+  (package-install 'fiplr))
+
 
 ;; neotree file tree
 (unless (package-installed-p 'neotree)
