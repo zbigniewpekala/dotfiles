@@ -15,4 +15,4 @@ export -f cdg > /dev/null
 test -s "./.env" && load-local-conf
 add-zsh-hook chpwd load-local-conf
 
-. /opt/erlang/17.5/activate
+export PATH="/opt/erlang/20.1-sources/release/x86_64-apple-darwin17.0.0/bin:$PATH"

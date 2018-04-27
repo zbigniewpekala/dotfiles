@@ -32,6 +32,9 @@
 ; Polish characters (change right Meta key into Alt)
 (setq ns-right-alternate-modifier nil)
 
+(setq whitespace-style '(face spaces newline space-mark newline-mark))
+(global-whitespace-mode t)
+
 ;; ido mode
 (require 'ido)
 (ido-mode t)
@@ -83,7 +86,6 @@
   (package-refresh-contents)
   (package-install 'fiplr))
 
-
 ;; neotree file tree
 (unless (package-installed-p 'neotree)
   (package-refresh-contents)
@@ -111,9 +113,9 @@
 (global-set-key (kbd "M-SPC") 'company-complete)
 
 ;; erlang
-(add-to-list 'load-path "/opt/erlang/17.5/lib/tools-2.7.2/emacs")
-(setq erlang-root-dir "/opt/erlang/17.5")
-(add-to-list 'exec-path "/opt/erlang/17.5/bin")
+(add-to-list 'load-path "/opt/erlang/20.1-sources/release/x86_64-apple-darwin17.0.0/lib/tools-2.11/emacs")
+(setq erlang-root-dir "/opt/erlang/20.1-sources/release/x86_64-apple-darwin17.0.0")
+(add-to-list 'exec-path "/opt/erlang/20.1-sources/release/x86_64-apple-darwin17.0.0/bin")
 (require 'erlang-start)
 
 ;; distel required by company-distel

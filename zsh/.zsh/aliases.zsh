@@ -1,2 +1,6 @@
 alias kerl="/Users/zbigniewpekala/src/priv/erlang/kerl"
 alias start-rabbit="/Users/zbigniewpekala/src/siftlogic/rabbitmq_server-3.6.1/sbin/rabbitmq-server"
+alias start-es="/opt/elasticsearch-5.6.3/bin/elasticsearch"
+alias mt="mix test"
+alias mps="iex -S mix phoenix.server"
+alias cl="stty sane"
