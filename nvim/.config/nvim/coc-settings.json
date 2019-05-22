@@ -1,0 +1,24 @@
+{
+  "coc.preferences.formatOnType": false,
+  "coc.preferences.jumpCommand": "edit",
+  "suggest.enablePreview": true,
+  "suggest.timeout": 1000,
+  "suggest.triggerAfterInsertEnter": true,
+  "codeLens.enable": true,
+  "diagnostic.virtualText": true,
+  "coc.preferences.hoverTarget": "preview",
+  "diagnostic.virtualTextLines": 1,
+  "coc.preferences.colorSupport": true,
+  "languageserver": {
+    "elixirls": {
+      "command": "/Users/zbigniewpekala/src/priv/elixir/elixir-ls/release/language_server.sh",
+      "args": [],
+      "filetypes": ["elixir"],
+      "trace.server": "verbose",
+      "rootPatterns": ["mix.exs"],
+      "initializationOptions": {
+      },
+      "dialyzerEnabled": false
+    }
+  }
+}

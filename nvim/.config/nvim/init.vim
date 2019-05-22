@@ -6,7 +6,7 @@ call plug#begin($BUNDLES)
 Plug 'rbgrouleff/bclose.vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'Shougo/denite.nvim'
-Plug 'elixir-editors/vim-elixir'
+Plug 'elixir-editors/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 Plug 'scrooloose/nerdtree'
@@ -16,6 +16,13 @@ Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
+Plug 'jgdavey/tslime.vim'
+Plug 'janko-m/vim-test'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+Plug 'mhinz/vim-mix-format', {'for': ['eelixir', 'elixir']}
+" Plug 'andymass/vim-matchup'
+Plug 'rafi/vim-denite-z'
 
 call plug#end()
 
@@ -27,12 +34,18 @@ set shiftwidth=4
 set expandtab
 set nowrap
 
-let g:nnn#layout = { 'left': '~20%' }
+" let g:nnn#layout = { 'left': '~40%' }
 
 nmap <leader>nt :NERDTree<CR>
-nmap <leader>cnt :NERDTreeClose<CR>
+nmap <leader>ntc :NERDTreeClose<CR>
+nmap <leader>tn :TestNearest<CR>
+nmap <leader>l :noh<CR>
+nmap <leader>z :Denite z<CR>
+let test#strategy = 'tslime'
 
 nmap <leader>fmt :normal gg=G<CR>
+
+let g:gist_post_private = 1
 
 call denite#custom#var('file/rec', 'command',
 \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '--ignore', '.git', '-g', ''])
