@@ -5,13 +5,14 @@ call plug#begin($BUNDLES)
 
 Plug 'rbgrouleff/bclose.vim'
 Plug 'mcchrish/nnn.vim'
-Plug 'Shougo/denite.nvim'
+Plug 'Shougo/denite.nvim', {'tag': 'eaf2677'}
 Plug 'elixir-editors/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 Plug 'scrooloose/nerdtree'
 Plug 'qpkorr/vim-bufkill'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-eunuch'
 Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
@@ -21,8 +22,8 @@ Plug 'janko-m/vim-test'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 Plug 'mhinz/vim-mix-format', {'for': ['eelixir', 'elixir']}
-" Plug 'andymass/vim-matchup'
 Plug 'rafi/vim-denite-z'
+Plug 'jreybert/vimagit'
 
 call plug#end()
 
@@ -33,8 +34,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set nowrap
-
-" let g:nnn#layout = { 'left': '~40%' }
+"set icm=nosplit
 
 nmap <leader>nt :NERDTree<CR>
 nmap <leader>ntc :NERDTreeClose<CR>
@@ -48,7 +48,7 @@ nmap <leader>fmt :normal gg=G<CR>
 let g:gist_post_private = 1
 
 call denite#custom#var('file/rec', 'command',
-\ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '--ignore', '.git', '-g', ''])
+\ ['ag', '--skip-vcs-ignores', '--follow', '--nocolor', '--nogroup', '--hidden', '--ignore', '.git', '-g', ''])
 
 call denite#custom#map(
           \ 'insert',
@@ -68,12 +68,16 @@ call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'separator', [])
 call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#option('_', 'highlight_mode_insert', 'CursorLine')
+call denite#custom#option('_', 'highlight_matched_range', 'None')
+call denite#custom#option('_', 'highlight_matched_char', 'None')
 call denite#custom#var('grep', 'default_opts',
-\ ['--follow', '--nogroup', '--smart-case', '--hidden'])
+\ ['--follow', '--nogroup', '--smart-case', '--hidden', '--nocolor'])
 
 nmap <leader>bf :Denite buffer<CR>
-nmap <leader>f :Denite file/rec<CR>
+nmap <leader>k :Denite file/rec<CR>
 nmap <leader>g :Denite grep<CR>
+nmap <leader>cg :DeniteCursorWord grep:.<CR>
 
 nmap <S-j> <C-w><C-j>
 nmap <S-k> <C-w><C-k>
