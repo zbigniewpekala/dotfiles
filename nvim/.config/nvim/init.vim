@@ -24,8 +24,21 @@ Plug 'mattn/gist-vim'
 Plug 'mhinz/vim-mix-format', {'for': ['eelixir', 'elixir']}
 Plug 'rafi/vim-denite-z'
 Plug 'jreybert/vimagit'
+Plug 'tpope/vim-sensible'
+Plug 'chriskempson/base16-vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'tomasr/molokai'
 
 call plug#end()
+
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set background=dark
+
+" colors below
+colorscheme base16-helios
+" end of colors
 
 let mapleader=" "
 
@@ -34,7 +47,6 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set nowrap
-"set icm=nosplit
 
 nmap <leader>nt :NERDTree<CR>
 nmap <leader>ntc :NERDTreeClose<CR>
@@ -48,7 +60,7 @@ nmap <leader>fmt :normal gg=G<CR>
 let g:gist_post_private = 1
 
 call denite#custom#var('file/rec', 'command',
-\ ['ag', '--skip-vcs-ignores', '--follow', '--nocolor', '--nogroup', '--hidden', '--ignore', '.git', '-g', ''])
+\ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '--ignore', '.git', '-g', ''])
 
 call denite#custom#map(
           \ 'insert',
