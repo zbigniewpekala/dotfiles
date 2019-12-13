@@ -27,17 +27,20 @@ Plug 'jreybert/vimagit'
 Plug 'tpope/vim-sensible'
 Plug 'chriskempson/base16-vim'
 Plug 'arcticicestudio/nord-vim'
-Plug 'tomasr/molokai'
+Plug 'iCyMind/NeoSolarized'
 
 call plug#end()
 
+set colorcolumn=80
+
+set background=dark
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set background=dark
 
 " colors below
-colorscheme base16-helios
+" let g:solarized_termcolors=256
+colorscheme NeoSolarized
 " end of colors
 
 let mapleader=" "
