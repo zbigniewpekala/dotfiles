@@ -16,11 +16,11 @@
 (setq-default indent-tabs-mode nil)
 
 ;; color theme
-(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
-(add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
+;(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
+;(add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
 
-(require 'color-theme-solarized)
-(load-theme 'solarized-dark t)
+;(require 'color-theme-solarized)
+;(load-theme 'solarized-dark t)
 
 ;; scratch buffer cleanup
 (setq initial-scratch-message "")
@@ -29,21 +29,19 @@
 ;; match pairs of characters
 (show-paren-mode 1)
 
-; Polish characters (change right Meta key into Alt)
+;; Polish characters (change right Meta key into Alt)
 (setq ns-right-alternate-modifier nil)
 
-(setq whitespace-style '(face spaces newline space-mark newline-mark))
-(global-whitespace-mode t)
+;; present white characters somehow
+;; (setq whitespace-style '(face spaces newline space-mark newline-mark))
+;; (global-whitespace-mode t)
 
 ;; ido mode
-(require 'ido)
-(ido-mode t)
+; (require 'ido)
+; (ido-mode t)
 
 ;; cua mode for better copy-paste
 (cua-mode t)
-
-(eval-after-load 'rainbow-delimeters
-  '(global-rainbow-delimiters-mode))
 
 (global-set-key (kbd "C-x b") 'ibuffer)
 
@@ -114,7 +112,7 @@
 
 ;; erlang
 (add-to-list 'load-path "/opt/erlang/20.1-sources/release/x86_64-apple-darwin17.0.0/lib/tools-2.11/emacs")
-(setq erlang-root-dir "/opt/erlang/20.1-sources/release/x86_64-apple-darwin17.0.0")
+(setq erlang-root-dir "/opt/erlang/19.1-sources/release/x86_64-apple-darwin17.0.0")
 (add-to-list 'exec-path "/opt/erlang/20.1-sources/release/x86_64-apple-darwin17.0.0/bin")
 (require 'erlang-start)
 
