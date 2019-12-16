@@ -8,4 +8,3 @@ export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
 
 export SED=gsed
 export ERL_AFLAGS="-kernel shell_history enabled"
-
