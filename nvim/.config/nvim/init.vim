@@ -3,46 +3,31 @@ let $BUNDLES = expand($VIM . 'bundles/')
 
 call plug#begin($BUNDLES)
 
-Plug 'rbgrouleff/bclose.vim'
-Plug 'mcchrish/nnn.vim'
 Plug 'Shougo/denite.nvim', {'tag': 'eaf2677'}
+Plug 'chriskempson/base16-vim'
 Plug 'elixir-editors/vim-elixir', {'for': ['eelixir', 'elixir']}
-Plug 'yuttie/comfortable-motion.vim'
+Plug 'iCyMind/NeoSolarized'
+Plug 'janko-m/vim-test'
+Plug 'jgdavey/tslime.vim'
+Plug 'jreybert/vimagit'
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
+Plug 'mcchrish/nnn.vim'
+Plug 'mhinz/vim-mix-format', {'for': ['eelixir', 'elixir']}
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-Plug 'scrooloose/nerdtree'
 Plug 'qpkorr/vim-bufkill'
-Plug 'tpope/vim-fugitive'
+Plug 'rafi/vim-denite-z'
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
 Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
-Plug 'jgdavey/tslime.vim'
-Plug 'janko-m/vim-test'
-Plug 'mattn/webapi-vim'
-Plug 'mattn/gist-vim'
-Plug 'mhinz/vim-mix-format', {'for': ['eelixir', 'elixir']}
-Plug 'rafi/vim-denite-z'
-Plug 'jreybert/vimagit'
-Plug 'tpope/vim-sensible'
-Plug 'chriskempson/base16-vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'iCyMind/NeoSolarized'
 
 call plug#end()
 
-set colorcolumn=80
-
-set background=dark
-set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-" colors below
-" let g:solarized_termcolors=256
-colorscheme NeoSolarized
-" end of colors
-
+" general
 let mapleader=" "
 
 set tabstop=4
@@ -50,18 +35,43 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set nowrap
+set colorcolumn=80
+" end of general
 
+" colors
+set background=dark
+set termguicolors
+
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+colorscheme NeoSolarized
+" end of colors
+
+" mappings
+nmap <S-j> <C-w><C-j>
+nmap <S-k> <C-w><C-k>
+nmap <S-l> <C-w><C-l>
+nmap <S-h> <C-w><C-h>
+
+nmap <leader>l :noh<CR>
 nmap <leader>nt :NERDTree<CR>
 nmap <leader>ntc :NERDTreeClose<CR>
 nmap <leader>tn :TestNearest<CR>
-nmap <leader>l :noh<CR>
-nmap <leader>z :Denite z<CR>
-let test#strategy = 'tslime'
-
 nmap <leader>fmt :normal gg=G<CR>
 
-let g:gist_post_private = 1
+nmap <leader>z :Denite z<CR>
+nmap <leader>bf :Denite buffer<CR>
+nmap <leader>k :Denite file/rec<CR>
+nmap <leader>g :Denite grep<CR>
+nmap <leader>cg :DeniteCursorWord grep:.<CR>
+" end of mappings
 
+let g:gist_post_private = 1 " gist-vim
+let g:dispatch_compilers = {'mix test': 'exunit'} " vim-test
+let test#strategy = 'tslime'
+
+" denite
 call denite#custom#var('file/rec', 'command',
 \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '--ignore', '.git', '-g', ''])
 
@@ -88,17 +98,9 @@ call denite#custom#option('_', 'highlight_matched_range', 'None')
 call denite#custom#option('_', 'highlight_matched_char', 'None')
 call denite#custom#var('grep', 'default_opts',
 \ ['--follow', '--nogroup', '--smart-case', '--hidden', '--nocolor'])
+" end of denite
 
-nmap <leader>bf :Denite buffer<CR>
-nmap <leader>k :Denite file/rec<CR>
-nmap <leader>g :Denite grep<CR>
-nmap <leader>cg :DeniteCursorWord grep:.<CR>
-
-nmap <S-j> <C-w><C-j>
-nmap <S-k> <C-w><C-k>
-nmap <S-l> <C-w><C-l>
-nmap <S-h> <C-w><C-h>
-
+" coq
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -125,7 +127,6 @@ nmap g? <Plug>(coc-diagnostic-info)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 
-let g:dispatch_compilers = {'mix test': 'exunit'}
-
 set completeopt+=preview
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+" end of coq
