@@ -5,3 +5,4 @@ source ~/.zsh/plugins.zsh
 source ~/.zsh/aliases.zsh
 source ~/.priv.zsh
 source /usr/local/etc/profile.d/z.sh
+source /opt/asdf/asdf.sh
