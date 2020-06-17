@@ -11,14 +11,14 @@
   "coc.preferences.colorSupport": true,
   "languageserver": {
     "elixirls": {
-      "command": "/Users/zbigniewpekala/src/priv/elixir/elixir-ls/release/language_server.sh",
+      "command": "/home/zp/src/priv/elixir/elixir-ls/release/language_server.sh",
       "args": [],
       "filetypes": ["elixir"],
       "trace.server": "verbose",
       "rootPatterns": ["mix.exs"],
       "initializationOptions": {
       },
-      "dialyzerEnabled": false
+      "dialyzerEnabled": true
     }
   }
 }

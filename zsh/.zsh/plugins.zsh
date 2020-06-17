@@ -1,4 +1,8 @@
-plugins=(git)
+plugins=(archlinux
+	asdf
+	colored-man-pages
+	colorize
+	git)
 source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -10,7 +14,7 @@ cdg() {
       cd "$dest_dir"
    fi
 }
-export -f cdg > /dev/null
+#export -f cdg > /dev/null
 
 test -s "./.env" && load-local-conf
 add-zsh-hook chpwd load-local-conf

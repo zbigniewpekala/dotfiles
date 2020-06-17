@@ -1,4 +1,4 @@
-export ZSH=/Users/zbigniewpekala/.oh-my-zsh
+export ZSH=/usr/share/oh-my-zsh
 export LC_ALL=en_US.UTF-8
 export GPG_TTY=$(tty)
 
@@ -12,3 +12,5 @@ export PATH=$PATH:/opt/asdf/bin
 
 export SED=gsed
 export ERL_AFLAGS="-kernel shell_history enabled"
+
+eval $(keychain --eval --quiet ~/.ssh/id_rsa)

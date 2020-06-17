@@ -5,3 +5,5 @@
 ZSH_THEME="robbyrussell"
 
 autoload -Uz add-zsh-hook
+
+eval "$(direnv hook zsh)"

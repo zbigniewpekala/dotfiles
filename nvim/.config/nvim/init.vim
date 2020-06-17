@@ -3,7 +3,7 @@ let $BUNDLES = expand($VIM . 'bundles/')
 
 call plug#begin($BUNDLES)
 
-Plug 'Shougo/denite.nvim', {'tag': 'eaf2677'}
+Plug 'Shougo/denite.nvim'
 Plug 'chriskempson/base16-vim'
 Plug 'elixir-editors/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'iCyMind/NeoSolarized'
@@ -75,18 +75,17 @@ let test#strategy = 'tslime'
 call denite#custom#var('file/rec', 'command',
 \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '--ignore', '.git', '-g', ''])
 
-call denite#custom#map(
-          \ 'insert',
-          \ '<Down>',
-          \ '<denite:move_to_next_line>',
-          \ 'noremap'
-          \)
-    call denite#custom#map(
-          \ 'insert',
-          \ '<Up>',
-          \ '<denite:move_to_previous_line>',
-          \ 'noremap'
-          \)
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>
+                \ denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> q
+                \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i
+                \ denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> p
+                \ denite#do_map('do_action', 'preview')
+endfunction
 
 call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('grep', 'recursive_opts', [])

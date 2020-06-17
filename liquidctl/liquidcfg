@@ -1,0 +1,15 @@
+#!/bin/bash -xe
+#
+# Configure liquidctl devices.
+
+sleep 1
+
+LL="liquidctl $EXTRAOPTIONS"
+KRAKEN="--vendor 0x1e71 --product 0x2007"
+SMART_DEVICE="--vendor 0x1e71 --product 0x2006"
+
+$LL initialize all
+$LL $KRAKEN set pump speed 20 30 30 30 31 31 32 35 33 40 34 50 40 90 50 100
+$LL $SMART_DEVICE set fan1 speed 30
+$LL $SMART_DEVICE set fan2 speed 30
+$LL $SMART_DEVICE set fan3 speed 30
